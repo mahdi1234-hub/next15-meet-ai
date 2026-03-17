@@ -18,7 +18,10 @@ import { inngest } from "@/inngest/client";
 import { generateAvatarUri } from "@/lib/avatar";
 import { streamChat } from "@/lib/stream-chat";
 
-const openaiClient = new OpenAI({ apiKey: process.env.OPENAI_API_KEY! });
+const openaiClient = new OpenAI({
+  apiKey: process.env.CEREBRAS_API_KEY!,
+  baseURL: "https://api.cerebras.ai/v1",
+});
 
 function verifySignatureWithSDK(body: string, signature: string): boolean {
   return streamVideo.verifyWebhook(body, signature);
@@ -230,7 +233,7 @@ export async function POST(req: NextRequest) {
           ...previousMessages,
           { role: "user", content: text },
         ],
-        model: "gpt-4o",
+        model: "llama-4-scout-17b-16e-instruct",
       });
 
       const GPTResponseText = GPTResponse.choices[0].message.content;
