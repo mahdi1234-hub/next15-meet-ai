@@ -98,7 +98,7 @@ export async function POST(req: NextRequest) {
     const call = streamVideo.video.call("default", meetingId);
     const realtimeClient = await streamVideo.video.connectOpenAi({
       call,
-      openAiApiKey: process.env.OPENAI_API_KEY!,
+      openAiApiKey: process.env.CEREBRAS_API_KEY!,
       agentUserId: existingAgent.id,
     });
 
@@ -233,7 +233,7 @@ export async function POST(req: NextRequest) {
           ...previousMessages,
           { role: "user", content: text },
         ],
-        model: "llama-4-scout-17b-16e-instruct",
+        model: "llama3.1-8b",
       });
 
       const GPTResponseText = GPTResponse.choices[0].message.content;
