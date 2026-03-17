@@ -31,7 +31,7 @@ Example:
 - Feature X automatically does Y
 - Mention of integration with Z
   `.trim(),
-  model: openai({ model: "llama-4-scout-17b-16e-instruct", apiKey: process.env.CEREBRAS_API_KEY, baseUrl: "https://api.cerebras.ai/v1" }),
+  model: openai({ model: "llama3.1-8b", apiKey: process.env.CEREBRAS_API_KEY, baseUrl: "https://api.cerebras.ai/v1" }),
 });
 
 export const meetingsProcessing = inngest.createFunction(
